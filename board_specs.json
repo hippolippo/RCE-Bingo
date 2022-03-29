@@ -3,7 +3,7 @@
   "offset": [391,391],
   "dimensions": [5,5],
   "free-tile": {
-    "activated": true,
+    "activated": false,
     "position": [2,2],
     "image": "006.jpg"
   }
