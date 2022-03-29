@@ -1,7 +1,7 @@
 from PIL import Image
 from json import load
 import os
-from random import choices, sample
+from random import choices, sample, shuffle
 
 
 def wsample(population, k, weights):
@@ -15,12 +15,14 @@ def wsample(population, k, weights):
     if len([x for x in weights if x != weights[0]]) == 0:
         return sample(population, k)
     population = [i for i in population]
-    result = tuple()
+    result = []
     for n in range(k):
         picked = choices([i for i in range(len(population))], weights)[0]
         weights.pop(picked)
-        result += (population.pop(picked),)
-    return result
+        result.append(population.pop(picked))
+    # prevents high weights from always being a the top
+    shuffle(result)
+    return tuple(result)
 
 
 def generate_board():
