@@ -38,7 +38,7 @@ def generate_board():
     weights = [(weight_settings["default-weight"] if tile not in weight_settings["overrides"]
                 else weight_settings["overrides"][tile]) for tile in tiles_files]
     tiles_files = wsample(tiles_files, tile_count, weights)
-    image = Image.open("backdrops/background.jpg")
+    background = Image.open("backdrops/background.png")
     counter = 0
     for y in range(settings["dimensions"][1]):
         for x in range(settings["dimensions"][0]):
@@ -49,11 +49,15 @@ def generate_board():
                 tile = Image.open(os.path.join("tiles", settings["free-tile"]["image"]))
             coordinates = [settings["top-left"][0] + settings["offset"][0] * x,
                            settings["top-left"][1] + settings["offset"][1] * y]
-            image.paste(tile, (coordinates[0], coordinates[1]))
+            background.paste(tile, (coordinates[0], coordinates[1]))
             counter += 1
-    overlay = Image.open("backdrops/foreground.png")
-    image.paste(overlay, (0, 0), overlay)
-    return image
+    # use foreground containing "Free" overlay
+    if settings["free-tile"]["activated"]:
+        overlay = Image.open("backdrops/foreground_free.png")
+    else:
+        overlay = Image.open("backdrops/foreground.png")
+    final_image = Image.alpha_composite(background, overlay)
+    return final_image
 
 
 if __name__ == "__main__":

@@ -1,10 +1,10 @@
 {
-  "top-left": [106,917],
-  "offset": [391,391],
+  "top-left": [100,917],
+  "offset": [395,395],
   "dimensions": [5,5],
   "free-tile": {
-    "activated": false,
+    "activated": true,
     "position": [2,2],
-    "image": "006.jpg"
+    "image": "0036.jpg"
   }
 }
