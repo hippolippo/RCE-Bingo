@@ -30,7 +30,9 @@ jobs:
           python-version: 3.10.4 # optional, default is 3.x
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: python generator.py
+      - name: Run Generator
+        run: |
+            pip install Pillow
+            python generator.py
 
 
