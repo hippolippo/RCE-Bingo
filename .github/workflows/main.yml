@@ -24,10 +24,10 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Setup Python
-        uses: actions/setup-python@v3.0.0
+        uses: actions/setup-python@v3.10.4
         with:
           # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-          python-version: 3.10 # optional, default is 3.x
+          python-version: 3.10.4 # optional, default is 3.x
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
