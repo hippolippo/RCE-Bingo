@@ -32,6 +32,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run Generator
         run: |
+            rm output.png
             pip install Pillow
             python generator.py
             
