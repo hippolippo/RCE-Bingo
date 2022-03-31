@@ -51,12 +51,12 @@ def generate_board():
                            settings["top-left"][1] + settings["offset"][1] * y]
             background.paste(tile, (coordinates[0], coordinates[1]))
             counter += 1
-    # use foreground containing "Free" overlay
+    foreground = Image.open("backdrops/foreground.png")
+    final_image = Image.alpha_composite(background, foreground)
+    # use "Free" overlay
     if settings["free-tile"]["activated"]:
-        overlay = Image.open("backdrops/foreground_free.png")
-    else:
-        overlay = Image.open("backdrops/foreground.png")
-    final_image = Image.alpha_composite(background, overlay)
+        free_overlay = Image.open("backdrops/free.png")
+        final_image = Image.alpha_composite(final_image, free_overlay)
     return final_image
 
 
